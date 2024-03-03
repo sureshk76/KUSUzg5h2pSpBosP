@@ -2,15 +2,10 @@ import tensorflow as tf
 
 def get_data():
     img_height, img_width, img_channels = 180, 180, 3
-
     batch_size=32
-
     data_dir = 'monreader\\src\\data\\images\\training'
-
     test_data_dir = 'monreader\\src\\data\\images\\testing'
-
     loading_dataste_seed = 0
-
 
     train_data = tf.keras.preprocessing.image_dataset_from_directory(
     data_dir,

@@ -1,20 +1,33 @@
-from features.evaluate_model import evaluate_model
+from features.evaluate_model import evaluate_model, predict_image
 from features.data_util import get_data
-# from models.train_model import train_model
-# from models.predict_model import predict_model
-# from models import fd_model
+from PIL import Image
 import tensorflow as tf
+import gradio as gr
+import io
+import base64
+from transformers import pipeline
+import numpy as np
 
 
 def main():
-    _, _, data = get_data()
-    _, _, test_data = data
-    results = evaluate_model(tf.keras.models.load_model('monreader\\src\\models\\fd_model.h5'), test_data)
-    print(results)
+    
+    img_height, img_width = 180, 180
+    model = tf.keras.models.load_model('monreader\\src\\models\\fd_model.h5')
+
+    def predict_image_wrapper(image):
+        return predict_image(image, img_height, img_width, model)
+
+    inputs = gr.Image()
+    outputs = gr.Textbox()
+
+    # Create a Gradio interface with the predict_image function
+    gr.Interface(fn=predict_image_wrapper, 
+                 inputs=inputs, 
+                 outputs=outputs, 
+                 examples=['monreader\\src\\data\\0001_000000017.jpg', 'monreader\\src\\data\\0002_000000027.jpg', 'monreader\\src\\data\\0004_000000013.jpg'], 
+                 title="Image Classification"
+                 ).launch()
+
 
 if __name__ == '__main__':
     main()
-
-
-
-
