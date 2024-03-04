@@ -27,4 +27,6 @@ The above pretrained models used produced good results with Mobilenet and Effici
  
 ![image](https://github.com/sureshk76/KUSUzg5h2pSpBosP/assets/18317652/f975cdf1-f318-4f5a-b916-860e7a136508)
  
+App:
+![image](https://github.com/sureshk76/KUSUzg5h2pSpBosP/assets/18317652/88a9fe11-8c3a-4351-8cfc-0a8ff08ffd42)
 
